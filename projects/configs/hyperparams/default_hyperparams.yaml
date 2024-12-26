@@ -1,0 +1,65 @@
+# configs/hyperparams.yaml
+
+# Optimizer configuration
+optimizer:
+  type: AdamW
+  lr: 0.0002
+  weight_decay: 0.0001
+  paramwise_cfg:
+    custom_keys:
+      backbone:
+        lr_mult: 0.1
+      sampling_offsets:
+        lr_mult: 0.1
+      reference_points:
+        lr_mult: 0.1
+
+# Learning rate schedule
+lr_config:
+  policy: step
+  step: [8, 11]
+
+# Runner settings
+runner:
+  type: EpochBasedRunner
+  max_epochs: 12
+
+# Dataset configuration
+data:
+  samples_per_gpu: 2
+  workers_per_gpu: 2
+  train:
+    type: CocoDataset
+    ann_file: data/coco/annotations/instances_train2017.json
+    img_prefix: data/coco/train2017/
+  val:
+    type: CocoDataset
+    ann_file: data/coco/annotations/instances_val2017.json
+    img_prefix: data/coco/val2017/
+  test:
+    type: CocoDataset
+    ann_file: data/coco/annotations/instances_val2017.json
+    img_prefix: data/coco/val2017/
+
+# Model configuration
+model:
+  type: CoDETR
+  backbone:
+    type: ResNet
+    depth: 50
+    num_stages: 4
+    out_indices: [1, 2, 3]
+    frozen_stages: 1
+    norm_cfg:
+      type: BN
+      requires_grad: False
+    norm_eval: True
+    style: pytorch
+    init_cfg:
+      type: Pretrained
+      checkpoint: torchvision://resnet50
+  neck:
+    type: ChannelMapper
+    in_channels: [512, 1024, 2048]
+    out_channels: 256
+    num_outs: 4

@@ -1,0 +1,50 @@
+{
+  "os":  "Windows-10-10.0.22621-SP0",
+  "python":  "3.7.0",
+  "startedAt":  "2024-12-26T06:20:11.180153Z",
+  "args":  [
+    "projects/configs/co_deformable_detr/co_deformable_detr_r50_1x_coco.py",
+    "--work-dir",
+    "path_to_exp",
+    "--hyperparams",
+    "projects/configs/hyperparams/default_hyperparams.yaml"
+  ],
+  "program":  "tools/train_wandb.py",
+  "codePath":  "tools\\train_wandb.py",
+  "git":  {
+    "remote":  "https://github.com/Sense-X/Co-DETR.git",
+    "commit":  "2d59a3038533d00732275a0f5d31cf5ff0b540ad"
+  },
+  "email":  "jdh251425142514@gmail.com",
+  "root":  "C:\\Co-DETR",
+  "host":  "DESKTOP-B32QARD",
+  "username":  "user",
+  "executable":  "C:\\Co-DETR\\co-DETR_env\\Scripts\\python.exe",
+  "codePathLocal":  "tools\\train_wandb.py",
+  "cpu_count":  6,
+  "cpu_count_logical":  12,
+  "gpu":  "NVIDIA GeForce RTX 3060",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "511243710464",
+      "used":  "377486737408"
+    }
+  },
+  "memory":  {
+    "total":  "16984190976"
+  },
+  "cpu":  {
+    "count":  6,
+    "countLogical":  12
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 3060",
+      "memoryTotal":  "12884901888",
+      "cudaCores":  3584,
+      "architecture":  "Ampere"
+    }
+  ],
+  "cudaVersion":  "12.6"
+}
